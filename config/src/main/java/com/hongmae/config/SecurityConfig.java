@@ -1,4 +1,4 @@
-package com.hongmae.eureka.security;
+package com.hongmae.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,22 +25,18 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
-
         return http.build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-
         UserDetails admin = User.builder()
                 .username("hongmae")
                 .password(bCryptPasswordEncoder().encode("Fu89PavCOD"))
                 .roles("ADMIN")
                 .build();
-
 
         return new InMemoryUserDetailsManager(admin);
     }
