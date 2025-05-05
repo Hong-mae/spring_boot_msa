@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: user-service
+
+  profiles:
+    active: dev
+
+  config:
+    import: optional:configserver:http://hongmae:Fu89PavCOD@localhost:9000
+
+jwt:
+  issuer: ${jwt.issure}
+  secretKey: ${jwt.secretKey}
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://${admin.id}:${admin.pw}@${eureka.instance.hostname:localhost}:8761/eureka

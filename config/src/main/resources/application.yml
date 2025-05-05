@@ -1,65 +1,13 @@
-spring:
-  application:
-    name: config
-
 server:
   port: 9000
 
 spring:
+  application:
+    name: config-service
+
   cloud:
     config:
       server:
-          git:
-            uri: git@github.com:Hong-mae/spring-msa-prj-config.git
-            ignore-local-ssh-settings: true
-            private-key: -----BEGIN RSA PRIVATE KEY-----
-              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
-              -----END RSA PRIVATE KEY-----
+        git:
+          uri: git@github.com:Hong-mae/spring-msa-prj-config.git
+#          clone-on-start: true
