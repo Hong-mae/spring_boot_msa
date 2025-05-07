@@ -1,6 +1,8 @@
 spring:
   application:
     name: discovery
+  profiles:
+    active: dev, secret
 
 server:
   port: 8761
@@ -10,6 +12,6 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://hongmae:Fu89PavCOD@${eureka.instance.hostname:localhost}:8761/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname:localhost}:8761/eureka
   server:
     peer-node-read-timeout-ms: 10000

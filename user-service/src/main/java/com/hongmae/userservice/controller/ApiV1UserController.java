@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/v1/users")
+@RequestMapping("/api/v1/users")
 public class ApiV1UserController {
     @GetMapping("")
     public String index() {
